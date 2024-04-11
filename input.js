@@ -64,33 +64,39 @@ inputhandler.InputHandler.prototype = {
         $(window).blur(function(){
             self.blur();
         });
-        /*
-        too much overhead, using the dom directly for mouse tracking
-        $(window).mousemove(function(e){
-            self.mouseMove(e.pageX, e.pageY);
-        });
-        */
-        $(element).bind('touchstart', function () {
+      
+        element.ontouchstart = function () {
             return self.mouseDown();
-        });
+        }
         element.ontouchmove = function(e){
             self.mouseMove(e.touches[0].pageX, e.touches[0].pageY);
             return false;
         }
-        $(element).bind('touchend', function () {
-            return self.mouseUp();
-        });
-        document.onmousemove = function(e) {
+        element.ontouchend = function(e){
+            // return self.mouseUp();
+        }
+
+        element.onmousedown = function(e){
+            console.log(` mdown`);
+            return self.mouseDown();
+        }
+
+        element.onmousemove = function(e){
+            console.log(` mmove`);
             self.mouseMove(e.pageX, e.pageY);
         }
-        $(element).mousedown(function(e){
-            return self.mouseDown();
-        });
-        $(element).mouseup(function(e){
-            self.mouseUp();
-        });
+
+        element.onmouseup = function(e){
+            // return self.mouseUp();
+        }
+
+        // $(element).mousedown(function(e){
+        //     return self.mouseDown();
+        // });
+        // $(element).mouseup(function(e){
+        //     self.mouseUp();
+        // });
         // prevent text selection in browsers that support it
-        document.onselectstart = function(){return false;}
     },
     blur: function() {
         this.hasFocus = false;

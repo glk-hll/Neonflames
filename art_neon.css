@@ -8,11 +8,11 @@ body {
 
 #colors {
   position: absolute;
-  top: 54px;
-  left: 8px;
+  bottom: 40px;
+  left: 30%;
+  transform: translateX(-50%);
   padding: 0;
   margin: 0;
-  width: 200px;
 }
 
 #colors li {
@@ -47,10 +47,13 @@ canvas {
 }
 
 #clear {
-  right: 300px;
+  position: absolute;
+  bottom: 40px;
+  left: 200px;
+  line-height: 30px;
 }
 
-#clear:hover {
+#clear:active {
   background: rgb(170,14,0); /* Old browsers */
 background: -moz-linear-gradient(top, rgba(170,14,0,1) 0%, rgba(190,13,0,1) 50%, rgba(148,7,0,1) 51%, rgba(150,8,0,1) 71%, rgba(154,3,0,1) 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(170,14,0,1)), color-stop(50%,rgba(190,13,0,1)), color-stop(51%,rgba(148,7,0,1)), color-stop(71%,rgba(150,8,0,1)), color-stop(100%,rgba(154,3,0,1))); /* Chrome,Safari4+ */
@@ -78,8 +81,8 @@ background: linear-gradient(top, rgba(170,14,0,1) 0%,rgba(190,13,0,1) 50%,rgba(1
   box-shadow: 0 0 10px black inset;
   position: absolute;
   margin: 8px;
-  top: 4px;
-  right: 8px;
+  /* top: 4px;
+  right: 8px; */
   color: #ddd;
   font-weight: bold;
   display: block;
@@ -104,38 +107,11 @@ background: linear-gradient(top, rgba(170,14,0,1) 0%,rgba(190,13,0,1) 50%,rgba(1
   border-color: #fff;
 }
 
-#social {
-  position: absolute;
-  left: 380px;
-  top: 15px;
-  height: 10px;
-  width: 300px;
-}
-#social > * {
-  float: left;
-  opacity: 0.5;
-}
-#social > *:hover {
-  opacity: 1.0;
-}
-
-h1, p {
-  color: #fff;
-  opacity: 0.5;
-  position: absolute;
-  top: -10px;
-  left: 15px;
-  font-family: Michroma, sans-serif;
-}
-
 p { 
   top: 8px;
   left: 150px;
 }
 
-h1:hover, p:hover {
-  opacity: 1.0;
-}
 h1 a, p a {
   color: #fff;
   text-decoration: none;

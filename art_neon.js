@@ -8,46 +8,13 @@ var particles = [],
     noise = noiseCanvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
 
 function clear(){
-    _gaq.push(['_trackEvent', 'neonfuzz', 'clear']);
     ctx.globalCompositeOperation = 'source-over';
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 function download(){
-    _gaq.push(['_trackEvent', 'neonfuzz', 'download']);
     window.open(canvas.toDataURL('image/jpeg', 0.9))
-}
-
-function share(){
-    _gaq.push(['_trackEvent', 'neonfuzz', 'share']);
-
-
-    try {
-        var img = canvas.toDataURL('image/jpeg', 0.9).split(',')[1];
-    } catch(e) {
-        var img = canvas.toDataURL().split(',')[1];
-    }
-    var w = window.open();
-    w.document.write('Uploading...');
-    $.ajax({
-        url: 'http://api.imgur.com/2/upload.json',
-        type: 'POST',
-        data: {
-            type: 'base64',
-            key: '48c16073663cb7d3befd1c2c064dfa0d',
-            name: 'neon.jpg',
-            title: 'test title',
-            caption: 'test caption',
-            image: img
-        },
-        dataType: 'json'
-    }).success(function(data) {
-        w.location.href = data['upload']['links']['imgur_page'];
-    }).error(function() {
-        alert('Could not reach api.imgur.com. Sorry :(');
-        w.close();
-    });
 }
 
 function getNoise(x, y, channel) {
